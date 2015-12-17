@@ -32,16 +32,16 @@ public class MonopolyRunner
 						int diceRoll = diceRoll1 + diceRoll2;
 						System.out.println("Hit 'r' to roll the dice.");
 						String roll = userInput.next();
-						if(counter<1)
-							{
+//						if(counter<1)
+//							{
 								diceRoll1=5;
 								diceRoll2=5;
 								diceRoll=10;
-							}
-						else
-							{
-								diceRoll = diceRoll1 + diceRoll2;
-							}
+//							}
+//						else
+//							{
+//								diceRoll = diceRoll1 + diceRoll2;
+//							}
 						if ((location + diceRoll) > 39)
 							{
 								location = location + diceRoll - 40;
@@ -81,6 +81,10 @@ public class MonopolyRunner
 										System.out.println("You have landed on Free Space. $400 has been added to your account.");
 										bankAccount+=400;
 									}
+								else if(Property.position.get(location).getName().equals("Go"))
+									{
+										System.out.println("You landed on Go");
+									}
 								else if(Property.position.get(location).getName().equals("Just Visiting"))
 									{
 										System.out.println("You are now going backwards.");
@@ -92,15 +96,17 @@ public class MonopolyRunner
 											int diceRolljv = 0-(diceRolljv1 + diceRolljv2);
 											System.out.println("Hit 'r' to roll the dice.");
 											String rolljv = userInput.next();
-											if (counter==5)
-												{
-													location=15;
-													diceRolljv=-5;
-												}
-											else 
-												{
-													diceRolljv=diceRolljv;
-												}
+											//if (counter==5)
+											//	{
+												//	location=15;
+													//diceRolljv=-5;
+//												}
+//											else 
+//												{
+													diceRolljv1=5;
+													diceRolljv2=5;
+													diceRolljv=-10;
+//												}
 											
 											if ((location + diceRolljv) <0)
 												{
@@ -123,6 +129,10 @@ public class MonopolyRunner
 															System.out.println("You have landed on Imperial and recieved $" + chanceAmt + " as a bribe to destroy the rebels.");
 
 														}
+													else if ( Property.position.get(location).getName().equals("Go") && counter > 0)
+														{
+															
+														}
 													else if (Property.position.get(location).getName().equals("Docking Tax") || Property.position.get(location).getName().equals("Bounty"))
 														{
 															System.out.println("You have landed on " + Property.position.get(location).getName() + " and must pay $200.");
@@ -142,10 +152,7 @@ public class MonopolyRunner
 															bankAccount+=400;
 														}
 							
-													else if ( Property.position.get(location).getName().equals("Go") && counter > 0)
-														{
-															System.out.println("You landed on go.");
-														}
+													
 													else if (location == 30)
 
 														{
